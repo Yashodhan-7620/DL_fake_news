@@ -64,12 +64,22 @@ def _json_default(o):
     raise TypeError(f"Not JSON serialisable: {type(o)}")
 
 
+# def environment_info() -> dict:
+#     """Library versions are recorded with every run (FR-10 reproducibility)."""
+#     info = {"python": sys.version.split()[0], "platform": platform.platform()}
+#     for mod in ("numpy", "pandas", "sklearn", "torch", "transformers", "streamlit"):
+#         try:
+#             info[mod] = __import__(mod).__version__
+#         except Exception:
+#             info[mod] = "not installed"
+#     return info
 def environment_info() -> dict:
     """Library versions are recorded with every run (FR-10 reproducibility)."""
+    from importlib import metadata
     info = {"python": sys.version.split()[0], "platform": platform.platform()}
-    for mod in ("numpy", "pandas", "sklearn", "torch", "transformers", "streamlit"):
+    for dist in ("numpy", "pandas", "scikit-learn", "torch", "transformers", "streamlit"):
         try:
-            info[mod] = __import__(mod).__version__
-        except Exception:
-            info[mod] = "not installed"
+            info[dist] = metadata.version(dist)
+        except metadata.PackageNotFoundError:
+            info[dist] = "not installed"
     return info

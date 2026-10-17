@@ -9,7 +9,7 @@ dependencies:
   - numpy<2.1
   - pandas>=2.0
   - scikit-learn>=1.3
-  - pytorch>=2.1        # CPU build by default; see README for the CUDA variant
+  - pytorch>=2.6        # CPU build by default; see README for the CUDA variant
   - matplotlib
   - seaborn
   - pyyaml

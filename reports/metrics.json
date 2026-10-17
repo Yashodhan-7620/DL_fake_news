@@ -31,7 +31,7 @@
       "Real"
     ],
     "roc_auc": 0.9990999676268715,
-    "train_seconds": 34.3,
+    "train_seconds": 28.5,
     "best_C": 10.0,
     "val_macro_f1": 0.9929108479564053,
     "n_errors": 45
