@@ -1,0 +1,51 @@
+# Single source of truth for every run. Everything here is logged into reports/.
+seed: 42
+
+data:
+  raw_dir: data/raw
+  fake_file: Fake.csv        # ISOT: label = fake
+  true_file: True.csv        # ISOT: label = real
+  # Alternative: one CSV with text + label columns (set single_csv to its filename)
+  single_csv: null
+  title_col: title
+  text_col: text
+  label_col: label           # only used with single_csv (values: 0 = fake, 1 = real)
+  use_title: true
+  # ISOT real articles start with e.g. "WASHINGTON (Reuters) -" -> a publisher shortcut.
+  strip_source_tags: true
+  max_chars_input: 20000     # inference-time length limit
+  min_chars: 20              # rows with less text than this are dropped
+  splits: {train: 0.70, val: 0.15, test: 0.15}
+  sample_per_class: null     # e.g. 2000 for a quick/CPU-friendly run; null = use all
+
+baseline:
+  max_features: 50000
+  ngram_range: [1, 2]
+  C_grid: [0.1, 1.0, 10.0]   # tuned on the validation set only
+
+neural:
+  vocab_size: 30000
+  min_freq: 2
+  max_len: 300
+  embed_dim: 128
+  batch_size: 64
+  epochs: 8
+  lr: 0.001
+  patience: 2                # early stopping on validation loss
+  dropout: 0.3
+  lstm: {hidden: 96}
+  gru: {hidden: 96}
+  cnn: {filters: 128, kernel_sizes: [3, 4, 5]}
+  num_threads: null          # null = torch default
+
+bert:
+  model_name: distilbert-base-uncased
+  max_len: 256
+  batch_size: 16
+  epochs: 2
+  lr: 0.00003
+
+paths:
+  models_dir: models
+  reports_dir: reports
+  processed_dir: data/processed

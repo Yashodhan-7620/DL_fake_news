@@ -1,0 +1,56 @@
+{
+  "rows_raw": 44898,
+  "columns": [
+    "title",
+    "text",
+    "label"
+  ],
+  "label_values_raw": {
+    "0": 23481,
+    "1": 21417
+  },
+  "missing_title": 0,
+  "missing_text": 0,
+  "missing_label": 0,
+  "unexpected_label_rows_dropped": 0,
+  "source_tag_in_raw_text": {
+    "Fake": 9,
+    "Real": 21247
+  },
+  "empty_or_too_short_dropped": 0,
+  "conflicting_label_contents": 0,
+  "exact_duplicates_removed": 5796,
+  "empty_after_cleaning_dropped": 5,
+  "near_duplicates_removed": 300,
+  "rows_clean": 38797,
+  "class_counts": {
+    "Fake": 17897,
+    "Real": 20900
+  },
+  "length_words": {
+    "mean": 418.2245792200428,
+    "median": 385.0,
+    "p95": 908.0,
+    "max": 8382
+  },
+  "train_test_exact_overlap": 0,
+  "split_sizes": {
+    "train": 27157,
+    "val": 5820,
+    "test": 5820
+  },
+  "split_class_counts": {
+    "test": {
+      "Fake": 2685,
+      "Real": 3135
+    },
+    "train": {
+      "Fake": 12527,
+      "Real": 14630
+    },
+    "val": {
+      "Fake": 2685,
+      "Real": 3135
+    }
+  }
+}

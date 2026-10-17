@@ -1,0 +1,6 @@
+data/raw/*.csv
+data/processed/
+models/*/*
+!models/*/.gitkeep
+__pycache__/
+.pytest_cache/
